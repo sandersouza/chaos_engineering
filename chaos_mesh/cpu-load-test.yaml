@@ -1,0 +1,16 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: StressChaos
+metadata:
+  name: cpu-load-test
+spec:
+  stressors:
+    - cpu:
+        workers: 2 # Número de trabalhadores que estressarão a CPU
+  mode: one
+  selector:
+    namespaces:
+      - { $app_namespace }
+  stressngStressors: {}
+  containerNames:
+    - { $container_name }
+  duration: "5m" # Duração do teste de estresse

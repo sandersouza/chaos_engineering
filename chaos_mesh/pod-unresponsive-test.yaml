@@ -1,0 +1,16 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: PodNetworkChaos
+metadata:
+  name: pod-unresponsive-test
+spec:
+  action: partition
+  mode: one
+  selector:
+    namespaces:
+      - { $app_namespace }
+  target:
+    selector:
+      matchLabels:
+        app: { $pod_name }
+  partition:
+    duration: "30s" # Duração da interrupção da comunicação

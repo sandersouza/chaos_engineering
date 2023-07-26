@@ -1,0 +1,12 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: PodChaos
+metadata:
+  name: container-failure
+spec:
+  action: container-kill
+  mode: one
+  selector:
+    namespaces:
+      -{ $app_namespace }
+  containerNames:
+    - { $container_name }

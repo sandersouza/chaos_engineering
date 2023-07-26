@@ -1,0 +1,15 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: PodNetworkChaos
+metadata:
+  name: packet-loss
+spec:
+  action: loss
+  mode: one
+  selector:
+    namespaces:
+      - { $app_namespace }
+  duration: "60s" # Duração da perda de pacotes
+  target:
+    targetSelector: {}
+  loss:
+    lossRate: "30%" # Taxa de perda de pacotes de 30%

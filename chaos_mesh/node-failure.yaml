@@ -1,0 +1,10 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: PodChaos
+metadata:
+  name: node-failure
+spec:
+  action: failure
+  mode: one
+  selector:
+    namespaces:
+      - { $app_namespace }

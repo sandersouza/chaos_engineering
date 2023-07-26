@@ -1,0 +1,15 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: PodNetworkChaos
+metadata:
+  name: network-latency
+spec:
+  action: delay
+  mode: one
+  selector:
+    namespaces:
+      - { $app_namespace }
+  duration: "30s" # Duração do atraso
+  target:
+    targetSelector: {}
+  delay:
+    latency: "200ms" # Latência de 200ms adicionada ao tráfego da rede
